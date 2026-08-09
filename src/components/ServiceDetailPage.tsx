@@ -20,6 +20,8 @@ import {
   Box
 } from "lucide-react";
 import { ServiceDetail, PRINTING_SERVICES_LIST, PACKAGING_SERVICES_LIST } from "../data/servicesData";
+import AutoPlayVideo from "./AutoPlayVideo";
+import { getServiceVideo } from "../data/videoMap";
 
 interface ServiceDetailPageProps {
   service: ServiceDetail;
