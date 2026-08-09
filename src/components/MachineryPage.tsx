@@ -16,6 +16,8 @@ import {
 } from "lucide-react";
 
 import CinematicImage from "./CinematicImage";
+import AutoPlayVideo from "./AutoPlayVideo";
+import { getMachineVideo } from "../data/videoMap";
 
 // Import real plant & equipment images from assets
 import cylinderImg from "../assets/images/heidelberg_cylinder_new_1784612943866.jpg";
