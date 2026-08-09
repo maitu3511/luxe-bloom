@@ -20,6 +20,8 @@ import {
   Box
 } from "lucide-react";
 import { ServiceDetail, PRINTING_SERVICES_LIST, PACKAGING_SERVICES_LIST } from "../data/servicesData";
+import AutoPlayVideo from "./AutoPlayVideo";
+import { getServiceVideo } from "../data/videoMap";
 
 interface ServiceDetailPageProps {
   service: ServiceDetail;
@@ -142,7 +144,20 @@ export default function ServiceDetailPage({
             </div>
             {/* Golden Glow Backdrop */}
             <div className="absolute -inset-1 bg-gradient-to-r from-[#D4AF37]/20 to-amber-500/10 rounded-sm blur-xl -z-10 group-hover:opacity-100 transition-opacity opacity-50" />
+
+            {/* WORKING PROCESS VIDEO FOR THIS SERVICE (auto-plays while in view) */}
+            {getServiceVideo(service.id) && (
+              <div className="mt-6">
+                <AutoPlayVideo
+                  src={getServiceVideo(service.id) as string}
+                  poster={service.image}
+                  title={service.title}
+                  badgeLabel="LIVE PROCESS VIDEO"
+                />
+              </div>
+            )}
           </motion.div>
+
 
           {/* Description & Fast CTAs Side (5 cols) */}
           <motion.div 
