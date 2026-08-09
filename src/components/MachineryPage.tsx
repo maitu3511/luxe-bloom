@@ -599,7 +599,6 @@ export default function MachineryPage({ onNavigateContact }: MachineryPageProps)
                 </motion.div>
 
                 {/* LARGE CINEMATIC MACHINE IMAGE-TO-VIDEO BLOCK (Spans 7 cols) */}
-                <div className={`lg:col-span-7 ${isDescriptionLeft ? "order-2 lg:order-2" : "order-2 lg:order-1"}`}>
                 <div className={`lg:col-span-7 space-y-5 ${isDescriptionLeft ? "order-2 lg:order-2" : "order-2 lg:order-1"}`}>
                   <CinematicImage
                     src={machine.image}
