@@ -600,6 +600,7 @@ export default function MachineryPage({ onNavigateContact }: MachineryPageProps)
 
                 {/* LARGE CINEMATIC MACHINE IMAGE-TO-VIDEO BLOCK (Spans 7 cols) */}
                 <div className={`lg:col-span-7 ${isDescriptionLeft ? "order-2 lg:order-2" : "order-2 lg:order-1"}`}>
+                <div className={`lg:col-span-7 space-y-5 ${isDescriptionLeft ? "order-2 lg:order-2" : "order-2 lg:order-1"}`}>
                   <CinematicImage
                     src={machine.image}
                     alt={machine.name}
@@ -609,9 +610,20 @@ export default function MachineryPage({ onNavigateContact }: MachineryPageProps)
                     aspectRatioClass="min-h-[360px] sm:min-h-[440px] lg:min-h-[500px]"
                     hoverActionText="EXPLORE MACHINE SPECS"
                   />
+
+                  {/* LIVE WORKING VIDEO OF THIS MACHINE (auto-plays while in view) */}
+                  {getMachineVideo(machine.id) && (
+                    <AutoPlayVideo
+                      src={getMachineVideo(machine.id) as string}
+                      poster={machine.image}
+                      title={machine.name}
+                      badgeLabel="LIVE MACHINE VIDEO"
+                    />
+                  )}
                 </div>
 
               </div>
+
 
               {/* ELEGANT SEPARATOR LINE BETWEEN MACHINERY ITEMS */}
               {index < ALL_MACHINERY.length - 1 && (
