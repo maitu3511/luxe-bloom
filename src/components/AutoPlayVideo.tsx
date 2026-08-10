@@ -72,30 +72,17 @@ export default function AutoPlayVideo({
       transition={{ duration: 0.5 }}
       className={`relative w-full overflow-hidden rounded-xs border border-neutral-800 bg-black shadow-xl ${heightClass} ${className}`}
     >
-      {inView ? (
-        <video
-          ref={videoRef}
-          src={src}
-          poster={poster}
-          muted
-          loop
-          autoPlay
-          playsInline
-          preload="none"
-          onError={() => setFailed(true)}
-          className="w-full h-full object-cover object-center"
-        />
-      ) : (
-        poster && (
-          <img
-            src={poster}
-            alt={title ?? "video preview"}
-            loading="lazy"
-            decoding="async"
-            className="w-full h-full object-cover object-center"
-          />
-        )
-      )}
+      <video
+        ref={videoRef}
+        src={src}
+        muted
+        loop
+        autoPlay
+        playsInline
+        preload={inView ? "auto" : "metadata"}
+        onError={() => setFailed(true)}
+        className="w-full h-full object-cover object-center bg-black"
+      />
 
       <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent pointer-events-none" />
 
