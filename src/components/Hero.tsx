@@ -6,7 +6,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ArrowDown, ChevronLeft, ChevronRight, ShieldCheck, Award, Zap, Cpu } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import AnimatedCounter from "./AnimatedCounter";
 
 // Importing the premium high-fidelity images
 import jewelleryBoxImg from "../assets/images/chocolate_jewellery_box_1786016996189.jpg";
@@ -22,6 +21,7 @@ interface HeroSlide {
   subtitle: string;
 }
 
+// Fixed hero order: 1) Production video → 2) Jewellery box image → 3) Rigid boxes image
 const HERO_SLIDES: HeroSlide[] = [
   {
     type: "video",
@@ -48,12 +48,6 @@ const HERO_SLIDES: HeroSlide[] = [
 ];
 
 
-const STATS = [
-  { label: "YEARS OF EXCELLENCE", value: 25, suffix: "+", icon: Award },
-  { label: "BRAND CLIENTS", value: 500, suffix: "+", icon: ShieldCheck },
-  { label: "MONTHLY BOX CAPACITY", value: 10, suffix: "M+", icon: Zap },
-  { label: "ADVANCED PRESS UNITS", value: 20, suffix: "+", icon: Cpu }
-];
 
 const slideVariants = {
   enter: (direction: number) => ({
@@ -145,7 +139,7 @@ export default function Hero() {
   return (
     <section id="home" className="relative min-h-[90vh] sm:min-h-screen flex flex-col justify-between overflow-hidden select-none bg-neutral-950 pb-12">
       
-      {/* Background Image/Video Slideshow with Ken Burns zoom effect */}
+      {/* Hero sequence: 1st video, then 2 image slides with Ken Burns zoom effect */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
@@ -221,55 +215,6 @@ export default function Hero() {
           />
         </div>
       </div>
-
-      {/* Service Showcase Side Images (desktop only) */}
-      <motion.div
-        initial={{ opacity: 0, x: -40 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
-        className="hidden 2xl:block absolute left-20 top-1/2 -translate-y-1/2 z-[5] w-52"
-      >
-        <motion.div
-          animate={{ y: [0, -14, 0] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" as const }}
-          className="rounded-xs overflow-hidden border border-[#D4AF37]/40 shadow-2xl bg-black/40 backdrop-blur-sm"
-        >
-          <img
-            src={rigidBoxesImg}
-            alt="Luxury rigid gift box packaging manufactured in-house"
-            className="w-full h-64 object-cover"
-            loading="lazy"
-            referrerPolicy="no-referrer"
-          />
-          <div className="px-3 py-2 bg-black/80">
-            <p className="text-[9px] tracking-[0.25em] font-black uppercase text-[#D4AF37]">Luxury Rigid Boxes</p>
-          </div>
-        </motion.div>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, x: 40 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.75, duration: 0.8, ease: "easeOut" }}
-        className="hidden 2xl:block absolute right-20 top-1/2 -translate-y-1/2 z-[5] w-52"
-      >
-        <motion.div
-          animate={{ y: [0, 14, 0] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" as const, delay: 0.8 }}
-          className="rounded-xs overflow-hidden border border-[#D4AF37]/40 shadow-2xl bg-black/40 backdrop-blur-sm"
-        >
-          <img
-            src={offsetPlantImg}
-            alt="Multi-colour offset printing press running production sheets"
-            className="w-full h-64 object-cover"
-            loading="lazy"
-            referrerPolicy="no-referrer"
-          />
-          <div className="px-3 py-2 bg-black/80">
-            <p className="text-[9px] tracking-[0.25em] font-black uppercase text-[#D4AF37]">Offset Print Production</p>
-          </div>
-        </motion.div>
-      </motion.div>
 
       {/* Manual Navigation Arrows */}
       <button
@@ -355,35 +300,6 @@ export default function Hero() {
             </div>
           </motion.div>
         </AnimatePresence>
-      </div>
-
-      {/* Animated Statistics Strip Bar at Bottom of Hero */}
-      <div className="relative z-10 max-w-6xl mx-auto w-full px-4 sm:px-6">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.7 }}
-          className="bg-black/85 backdrop-blur-xl border border-[#D4AF37]/40 rounded-xs p-4 sm:p-6 shadow-2xl grid grid-cols-2 md:grid-cols-4 gap-6 divide-y md:divide-y-0 md:divide-x divide-neutral-800"
-        >
-          {STATS.map((stat, idx) => {
-            const Icon = stat.icon;
-            return (
-              <div key={idx} className="flex items-center space-x-3 pt-4 md:pt-0 first:pt-0 pl-0 md:first:pl-0 md:pl-6">
-                <div className="p-2.5 bg-neutral-900 border border-[#D4AF37]/30 rounded-xs text-[#D4AF37]">
-                  <Icon size={22} />
-                </div>
-                <div>
-                  <div className="text-white text-xl sm:text-2xl font-black font-display tracking-wider">
-                    <AnimatedCounter to={stat.value} suffix={stat.suffix} />
-                  </div>
-                  <div className="text-[10px] sm:text-xs font-bold text-[#D4AF37] tracking-widest uppercase">
-                    {stat.label}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </motion.div>
       </div>
 
       {/* Scroll Down Arrow */}
