@@ -4,13 +4,10 @@
  */
 
 import React, { useState, useEffect, useRef } from "react";
-import { ArrowDown, ChevronLeft, ChevronRight, ShieldCheck, Award, Zap, Cpu } from "lucide-react";
+import { ArrowDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 // Importing the premium high-fidelity images
-import jewelleryBoxImg from "../assets/images/chocolate_jewellery_box_1786016996189.jpg";
-import rigidBoxesImg from "../assets/images/rigid_gift_boxes_1786016977384.jpg";
-import offsetPlantImg from "../assets/images/offset_megaplant_1784614968119.jpg";
 
 interface HeroSlide {
   type: "image" | "video";
@@ -21,31 +18,17 @@ interface HeroSlide {
   subtitle: string;
 }
 
-// Fixed hero order: 1) Production video → 2) Jewellery box image → 3) Rigid boxes image
 const HERO_SLIDES: HeroSlide[] = [
   {
     type: "video",
     src: "/videos/hero-production.mp4",
-    poster: offsetPlantImg,
     alt: "Live production line printing and making premium boxes",
     title: "INSIDE OUR PRESS FLOOR",
-    subtitle: "Live production: offset printing, foil stamping, die-cutting and box making under one roof."
+    subtitle:
+      "Live production: offset printing, foil stamping, die-cutting and box making under one roof.",
   },
-  {
-    type: "image",
-    src: jewelleryBoxImg,
-    alt: "Luxury jewellery box packaging with velvet insert",
-    title: "PREMIUM PACK CO",
-    subtitle: "Jai Maa Trading • If you can think or take it, we can print and make it!"
-  },
-  {
-    type: "image",
-    src: rigidBoxesImg,
-    alt: "Custom rigid gift boxes with foil stamping",
-    title: "LUXURY PACKAGING",
-    subtitle: "Innovative folding mono cartons, luxury rigid boxes, and custom retail packs."
-  }
 ];
+
 
 
 
@@ -84,10 +67,6 @@ export default function Hero() {
 
   const startTimer = () => {
     stopTimer();
-    timerRef.current = setInterval(() => {
-      setDirection(1);
-      setCurrent((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, 7000);
   };
 
   const stopTimer = () => {
@@ -139,7 +118,7 @@ export default function Hero() {
   return (
     <section id="home" className="relative min-h-[90vh] sm:min-h-screen flex flex-col justify-between overflow-hidden select-none bg-neutral-950 pb-12">
       
-      {/* Hero sequence: 1st video, then 2 image slides with Ken Burns zoom effect */}
+      {/* Background Image/Video Slideshow with Ken Burns zoom effect */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
@@ -158,42 +137,13 @@ export default function Hero() {
                 loop
                 muted
                 playsInline
-                poster={HERO_SLIDES[current].poster}
+                preload="auto"
+                onCanPlay={(e) => e.currentTarget.play().catch(() => {})}
                 className="w-full h-full object-cover object-center filter brightness-[0.45] contrast-[1.1]"
               >
-                <source src={HERO_SLIDES[current].src} type="video/mp4" />
-                <img
-                  src={HERO_SLIDES[current].poster}
-                  alt={HERO_SLIDES[current].alt}
-                  className="w-full h-full object-cover object-center filter brightness-[0.5] contrast-[1.08]"
-                  referrerPolicy="no-referrer"
-                />
+                <source src="/videos/hero-production.mp4" type="video/mp4" />
               </video>
-            ) : (
-              <motion.img
-                src={HERO_SLIDES[current].src}
-                alt={HERO_SLIDES[current].alt}
-                onError={(e) => {
-                  const target = e.currentTarget as HTMLImageElement;
-                  if (!target.src.includes("premium-pack-co-logo")) {
-                    target.src = "/images/logo/premium-pack-co-logo.jpg";
-                  }
-                }}
-                animate={{
-                  scale: [1, 1.07, 1.02],
-                  x: ["0%", "-1.5%", "0%"],
-                  y: ["0%", "1%", "0%"],
-                }}
-                transition={{
-                  duration: 8,
-                  repeat: Infinity,
-                  repeatType: "mirror",
-                  ease: "easeInOut" as const,
-                }}
-                className="w-full h-full object-cover object-center filter brightness-[0.5] contrast-[1.08]"
-                referrerPolicy="no-referrer"
-              />
-            )}
+            ) : null}
           </motion.div>
         </AnimatePresence>
 
@@ -219,14 +169,14 @@ export default function Hero() {
       {/* Manual Navigation Arrows */}
       <button
         onClick={handlePrev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full border border-[#D4AF37]/30 bg-black/40 backdrop-blur-md text-[#D4AF37] flex items-center justify-center hover:bg-[#D4AF37] hover:text-black transition-all duration-300 group cursor-pointer shadow-xl hidden sm:flex"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full border border-[#D4AF37]/30 bg-black/40 backdrop-blur-md text-[#D4AF37] flex items-center justify-center hover:bg-[#D4AF37] hover:text-black transition-all duration-300 group cursor-pointer shadow-xl hidden"
         aria-label="Previous Slide"
       >
         <ChevronLeft size={22} className="group-hover:-translate-x-0.5 transition-transform" />
       </button>
       <button
         onClick={handleNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full border border-[#D4AF37]/30 bg-black/40 backdrop-blur-md text-[#D4AF37] flex items-center justify-center hover:bg-[#D4AF37] hover:text-black transition-all duration-300 group cursor-pointer shadow-xl hidden sm:flex"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full border border-[#D4AF37]/30 bg-black/40 backdrop-blur-md text-[#D4AF37] flex items-center justify-center hover:bg-[#D4AF37] hover:text-black transition-all duration-300 group cursor-pointer shadow-xl hidden"
         aria-label="Next Slide"
       >
         <ChevronRight size={22} className="group-hover:translate-x-0.5 transition-transform" />
