@@ -25,7 +25,6 @@ interface AutoPlayVideoProps {
  */
 export default function AutoPlayVideo({
   src,
-  poster,
   title,
   badgeLabel = "LIVE WORKING VIDEO",
   className = "",
