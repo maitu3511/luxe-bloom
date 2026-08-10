@@ -885,6 +885,7 @@ export default function ProjectsPage() {
       {/* ========================================================
           4. FULL COLOR LIGHTBOX MODAL DIALOG
           ======================================================== */}
+      {createPortal(
       <AnimatePresence>
         {activeImageModal && (
           <motion.div
