@@ -17,6 +17,8 @@ import {
 
 import { PRINTING_SERVICES_LIST, PACKAGING_SERVICES_LIST } from "../data/servicesData";
 import CinematicImage from "./CinematicImage";
+import AutoPlayVideo from "./AutoPlayVideo";
+import { getServiceVideo } from "../data/videoMap";
 
 // High quality imagery for hero
 import cylinderGrayscaleImg from "../assets/images/heidelberg_cylinder_new_1784612943866.jpg";
@@ -198,6 +200,16 @@ export default function ServicesPage({ onNavigateContact }: ServicesPageProps) {
                           hoverActionText="EXPLORE PRINT SPECIFICATIONS"
                           priority={idx === 0}
                         />
+
+                        {getServiceVideo(service.id) && (
+                          <div className="mt-5">
+                            <AutoPlayVideo
+                              src={getServiceVideo(service.id) as string}
+                              title={service.title}
+                              badgeLabel="LIVE PROCESS VIDEO"
+                            />
+                          </div>
+                        )}
                       </div>
 
                       {/* CONTENT BLOCK (Spans 5 columns on desktop) */}
@@ -312,6 +324,16 @@ export default function ServicesPage({ onNavigateContact }: ServicesPageProps) {
                           hoverActionText="EXPLORE PACKAGING SPECIFICATIONS"
                           priority={idx === 0}
                         />
+
+                        {getServiceVideo(service.id) && (
+                          <div className="mt-5">
+                            <AutoPlayVideo
+                              src={getServiceVideo(service.id) as string}
+                              title={service.title}
+                              badgeLabel="LIVE PROCESS VIDEO"
+                            />
+                          </div>
+                        )}
                       </div>
 
                       {/* CONTENT BLOCK (Spans 5 columns on desktop) */}
