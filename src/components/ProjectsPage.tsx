@@ -939,7 +939,9 @@ export default function ProjectsPage() {
             </motion.div>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence>,
+      document.body
+      )}
 
       {/* Footer Line */}
       <div className="border-t border-neutral-900 w-full" />
