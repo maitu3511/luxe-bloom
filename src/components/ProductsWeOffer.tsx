@@ -12,7 +12,7 @@ import showcaseImg from "../assets/images/products_showcase_new_1784612998624.jp
 import skincareImg from "../assets/images/skincare_packaging_new_1784612968486.jpg";
 import skincarePkgOneImg from "../assets/images/skincare_pkg_one_1784521941334.jpg";
 import bookImg from "../assets/images/art_books_new_1784612983623.jpg";
-import displaysImg from "../assets/images/displays_new_1784613015099.jpg";
+import displaysImg from "../assets/images/display_systems_retail_1784520909561.jpg";
 
 import rigidGiftBoxesImg from "../assets/images/rigid_gift_boxes_1786016977384.jpg";
 import chocolateJewelleryImg from "../assets/images/chocolate_jewellery_box_1786016996189.jpg";

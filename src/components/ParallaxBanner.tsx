@@ -5,7 +5,7 @@
 
 import React from "react";
 import { motion } from "motion/react";
-import cylinderImage from "../assets/images/heidelberg_cylinder_new_1784612943866.jpg";
+import cylinderImage from "../assets/images/offset_megaplant_1784614968119.jpg";
 
 export default function ParallaxBanner() {
   return (
@@ -19,7 +19,7 @@ export default function ParallaxBanner() {
           viewport={{ once: true }}
           transition={{ duration: 1.2, ease: "easeOut" }}
           src={cylinderImage}
-          alt="Industrial high-tech print process"
+          alt="Offset printing mega plant machinery floor"
           className="w-full h-full object-cover object-center filter grayscale contrast-[1.1] brightness-[0.4]"
           referrerPolicy="no-referrer"
         />

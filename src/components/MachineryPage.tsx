@@ -614,7 +614,6 @@ export default function MachineryPage({ onNavigateContact }: MachineryPageProps)
                   {getMachineVideo(machine.id) && (
                     <AutoPlayVideo
                       src={getMachineVideo(machine.id) as string}
-                      poster={machine.image}
                       title={machine.name}
                       badgeLabel="LIVE MACHINE VIDEO"
                     />

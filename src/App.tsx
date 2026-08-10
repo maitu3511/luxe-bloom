@@ -15,12 +15,12 @@ import OurServices from "./components/OurServices";
 import SocialAndClients from "./components/SocialAndClients";
 import ParallaxBanner from "./components/ParallaxBanner";
 import Footer from "./components/Footer";
-import ServicesPage from "./components/ServicesPage";
-import ProjectsPage from "./components/ProjectsPage";
-import AboutPage from "./components/AboutPage";
-import MachineryPage from "./components/MachineryPage";
-import FaqsPage from "./components/FaqsPage";
-import ContactPage from "./components/ContactPage";
+const ServicesPage = React.lazy(() => import("./components/ServicesPage"));
+const ProjectsPage = React.lazy(() => import("./components/ProjectsPage"));
+const AboutPage = React.lazy(() => import("./components/AboutPage"));
+const MachineryPage = React.lazy(() => import("./components/MachineryPage"));
+const FaqsPage = React.lazy(() => import("./components/FaqsPage"));
+const ContactPage = React.lazy(() => import("./components/ContactPage"));
 import WhatsAppButton from "./components/WhatsAppButton";
 import {
   ScrollProgress,
@@ -113,7 +113,9 @@ export default function App() {
                 {/* 9. Parallax Technology Banner */}
                 <ParallaxBanner />
               </>
-            ) : currentPage === "services" ? (
+            ) : (
+              <React.Suspense fallback={<div className="min-h-[70vh] flex items-center justify-center bg-black"><div className="w-10 h-10 border-2 border-[#f5b800] border-t-transparent rounded-full animate-spin" /></div>}>
+              {currentPage === "services" ? (
               <ServicesPage onNavigateContact={() => handleNavigate("contact")} />
             ) : currentPage === "projects" ? (
               <ProjectsPage />
@@ -125,6 +127,8 @@ export default function App() {
               <FaqsPage onNavigateContact={() => handleNavigate("contact")} />
             ) : (
               <ContactPage />
+            )}
+              </React.Suspense>
             )}
           </motion.div>
         </AnimatePresence>
