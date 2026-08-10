@@ -9,8 +9,6 @@ import { motion, AnimatePresence } from "motion/react";
 import AnimatedCounter from "./AnimatedCounter";
 
 // Importing the premium high-fidelity images
-import bgOne from "../assets/images/heidelberg_cylinder_new_1784612943866.jpg";
-import bgTwo from "../assets/images/skincare_packaging_new_1784612968486.jpg";
 import jewelleryBoxImg from "../assets/images/chocolate_jewellery_box_1786016996189.jpg";
 import rigidBoxesImg from "../assets/images/rigid_gift_boxes_1786016977384.jpg";
 import offsetPlantImg from "../assets/images/offset_megaplant_1784614968119.jpg";
