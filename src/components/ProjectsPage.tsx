@@ -4,6 +4,7 @@
  */
 
 import React, { useState } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { X } from "lucide-react";
 
@@ -884,6 +885,7 @@ export default function ProjectsPage() {
       {/* ========================================================
           4. FULL COLOR LIGHTBOX MODAL DIALOG
           ======================================================== */}
+      {createPortal(
       <AnimatePresence>
         {activeImageModal && (
           <motion.div
@@ -937,7 +939,9 @@ export default function ProjectsPage() {
             </motion.div>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence>,
+      document.body
+      )}
 
       {/* Footer Line */}
       <div className="border-t border-neutral-900 w-full" />
