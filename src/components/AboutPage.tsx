@@ -12,8 +12,8 @@ import cylinderGrayscaleImg from "../assets/images/heidelberg_cylinder_new_17846
 import gluerMachineImg from "../assets/images/gluer_machine_new_1784613052337.jpg";
 import pressRollersImg from "../assets/images/press_rollers_new_1784613071794.jpg";
 import swastikaOfficeShowroom from "../assets/images/swastika_office_showroom_1784614485773.jpg";
-import ownerPortraitImg from "../assets/images/company_owner_portrait_1784614838922.jpg";
 import offsetMegaplantImg from "../assets/images/offset_megaplant_1784614968119.jpg";
+import mayankAroraFounderImg from "../assets/images/mayank_arora_founder.jpg";
 
 export default function AboutPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -30,9 +30,10 @@ export default function AboutPage() {
       year: "FOUNDATION",
       subtitle: "WHEN IT ALL STARTED",
       description: "Premium Pack Co's journey began with a bold vision: to establish a premier, process-driven printing enterprise in India. Focused on pristine design and production execution, the company emerged as a trusted partner for regional businesses and corporate leaders.",
-      image: ownerPortraitImg,
-      imageAlt: "Premium Pack Co Founder & Visionary",
-      imageTag: "FOUNDER & VISION"
+      image: mayankAroraFounderImg,
+      imageAlt: "Mayank Arora, Founder of Premium Pack Co",
+      imageTag: "FOUNDER & VISION",
+      founderName: "Mayank Arora"
     },
     {
       year: "PARTNERSHIP",
@@ -636,6 +637,12 @@ export default function AboutPage() {
                     {journeySlides[currentSlide].subtitle}
                   </p>
                 </div>
+
+                {journeySlides[currentSlide].founderName && (
+                  <p className="text-black text-sm sm:text-base font-black tracking-wide uppercase">
+                    {journeySlides[currentSlide].founderName}
+                  </p>
+                )}
                 
                 <p className="text-gray-600 text-xs sm:text-sm leading-[1.9] font-normal whitespace-pre-line max-w-xl">
                   {journeySlides[currentSlide].description}

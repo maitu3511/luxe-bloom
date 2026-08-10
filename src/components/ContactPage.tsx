@@ -127,9 +127,6 @@ export default function ContactPage() {
                 <a href="tel:+917503899662" className="text-xs sm:text-sm font-bold text-gray-900 hover:text-[#f5b800] transition-colors font-mono">
                   +91 7503899662
                 </a>
-                <a href="tel:+918700823167" className="text-xs sm:text-sm font-bold text-gray-900 hover:text-[#f5b800] transition-colors font-mono">
-                  +91 8700823167
-                </a>
               </div>
             </div>
 

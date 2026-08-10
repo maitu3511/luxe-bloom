@@ -24,6 +24,14 @@ interface HeroSlide {
 
 const HERO_SLIDES: HeroSlide[] = [
   {
+    type: "video",
+    src: "/videos/hero-production.mp4",
+    poster: offsetPlantImg,
+    alt: "Live production line printing and making premium boxes",
+    title: "INSIDE OUR PRESS FLOOR",
+    subtitle: "Live production: offset printing, foil stamping, die-cutting and box making under one roof."
+  },
+  {
     type: "image",
     src: jewelleryBoxImg,
     alt: "Luxury jewellery box packaging with velvet insert",
@@ -36,14 +44,6 @@ const HERO_SLIDES: HeroSlide[] = [
     alt: "Custom rigid gift boxes with foil stamping",
     title: "LUXURY PACKAGING",
     subtitle: "Innovative folding mono cartons, luxury rigid boxes, and custom retail packs."
-  },
-  {
-    type: "video",
-    src: "/videos/hero-production.mp4",
-    poster: offsetPlantImg,
-    alt: "Live production line printing and making premium boxes",
-    title: "INSIDE OUR PRESS FLOOR",
-    subtitle: "Live production: offset printing, foil stamping, die-cutting and box making under one roof."
   }
 ];
 
@@ -355,22 +355,6 @@ export default function Hero() {
             </div>
           </motion.div>
         </AnimatePresence>
-
-        {/* Slide Navigation Dots */}
-        <div className="flex space-x-3 mt-8">
-          {HERO_SLIDES.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => handleDotClick(index)}
-              className={`h-2 rounded-full transition-all duration-300 cursor-pointer focus:outline-none ${
-                index === current 
-                  ? "w-8 bg-[#D4AF37] shadow-[0_0_12px_#D4AF37]" 
-                  : "w-2 bg-white/40 hover:bg-white/85"
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div>
       </div>
 
       {/* Animated Statistics Strip Bar at Bottom of Hero */}

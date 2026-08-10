@@ -104,7 +104,6 @@ export default function Footer() {
               </h4>
               <p className="text-gray-400 hover:text-[#f5b800] transition-colors duration-200 flex flex-col space-y-1">
                 <a href="tel:+917503899662">+91 7503899662</a>
-                <a href="tel:+918700823167">+91 8700823167</a>
               </p>
             </div>
 
