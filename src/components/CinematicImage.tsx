@@ -102,6 +102,10 @@ export default function CinematicImage({
   videoSrc,
   priority = false,
 }: CinematicImageProps) {
+  // Images now render immediately (no lazy-load / fade-in gate) so they
+  // never appear blank while scrolling - the skeleton only shows for the
+  // brief real network fetch time, and the picture itself is not hidden
+  // behind an opacity gate anymore.
   const [isLoaded, setIsLoaded] = React.useState(false);
 
   // Determine preset configuration
@@ -126,7 +130,9 @@ export default function CinematicImage({
         onClick ? "cursor-pointer" : ""
       } ${aspectRatioClass} ${className}`}
     >
-      {/* Skeleton Shimmer Loading Placeholder */}
+      {/* Skeleton Shimmer Loading Placeholder - sits BEHIND the image (z-0)
+          so it never covers/delays the picture itself; it just fills the
+          tiny gap before the very first bytes paint. */}
       {!isLoaded && !isVideo && (
         <div className="absolute inset-0 bg-gradient-to-r from-neutral-900 via-neutral-800 to-neutral-900 animate-pulse z-0 flex items-center justify-center">
           <div className="w-10 h-10 border-2 border-[#f5b800]/40 border-t-[#f5b800] rounded-full animate-spin" />
@@ -149,8 +155,15 @@ export default function CinematicImage({
           <motion.img
             src={src}
             alt={alt}
-            loading={priority ? "eager" : "lazy"}
+            // Always eager + high priority fetch: these are hero/service
+            // images the visitor scrolls to almost immediately, so lazy
+            // loading was delaying the browser's request until the image
+            // was nearly on-screen, making it look "not loading". Eager
+            // loading lets the browser fetch it as soon as the page/route
+            // renders, well ahead of the person scrolling to it.
+            loading="eager"
             decoding="async"
+            fetchPriority={priority ? "high" : "auto"}
             onLoad={() => setIsLoaded(true)}
             onError={(e) => {
               setIsLoaded(true);
@@ -171,9 +184,11 @@ export default function CinematicImage({
               ease: "easeInOut" as const,
             }}
             style={{ willChange: "transform" }}
-            className={`w-full h-full object-cover object-center filter brightness-[0.96] contrast-[1.03] transition-opacity duration-500 ${
-              isLoaded ? "opacity-100" : "opacity-0"
-            }`}
+            // Image is visible immediately (opacity-100 from the very first
+            // paint) instead of waiting on the onLoad event to fade it in -
+            // the browser paints it progressively as bytes arrive, so the
+            // person sees it appear right away instead of a blank gap.
+            className="relative z-10 w-full h-full object-cover object-center filter brightness-[0.96] contrast-[1.03]"
             referrerPolicy="no-referrer"
           />
         )}
