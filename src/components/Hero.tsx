@@ -27,22 +27,22 @@ interface HeroSlide {
 const HERO_SLIDES: HeroSlide[] = [
   {
     type: "image",
-    src: bgOne,
-    alt: "Heidelberg Cylinder Press Machine",
+    src: jewelleryBoxImg,
+    alt: "Luxury jewellery box packaging with velvet insert",
     title: "PREMIUM PACK CO",
     subtitle: "Jai Maa Trading • If you can think or take it, we can print and make it!"
   },
   {
     type: "image",
-    src: bgTwo,
-    alt: "Luxury Skincare Packaging Cartons",
+    src: rigidBoxesImg,
+    alt: "Custom rigid gift boxes with foil stamping",
     title: "LUXURY PACKAGING",
     subtitle: "Innovative folding mono cartons, luxury rigid boxes, and custom retail packs."
   },
   {
     type: "video",
     src: "/videos/hero-production.mp4",
-    poster: jewelleryBoxImg,
+    poster: offsetPlantImg,
     alt: "Live production line printing and making premium boxes",
     title: "INSIDE OUR PRESS FLOOR",
     subtitle: "Live production: offset printing, foil stamping, die-cutting and box making under one roof."

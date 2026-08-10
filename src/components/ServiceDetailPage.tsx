@@ -150,7 +150,6 @@ export default function ServiceDetailPage({
               <div className="mt-6">
                 <AutoPlayVideo
                   src={getServiceVideo(service.id) as string}
-                  poster={service.image}
                   title={service.title}
                   badgeLabel="LIVE PROCESS VIDEO"
                 />

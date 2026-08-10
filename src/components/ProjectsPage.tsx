@@ -900,7 +900,7 @@ export default function ProjectsPage() {
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-w-4xl w-full bg-[#121212] border border-neutral-800 rounded-sm overflow-hidden shadow-2xl"
+              className="relative max-w-4xl w-full bg-black border border-neutral-800 rounded-sm overflow-hidden shadow-2xl"
             >
               {/* Close Button */}
               <button
@@ -912,7 +912,7 @@ export default function ProjectsPage() {
               </button>
 
               {/* Modal Full Color Image */}
-              <div className="relative max-h-[65vh] overflow-hidden bg-black flex items-center justify-center">
+              <div className="relative max-h-[85vh] overflow-hidden bg-black flex items-center justify-center">
                 <img
                   src={activeImageModal.src}
                   alt={activeImageModal.alt}
@@ -921,21 +921,6 @@ export default function ProjectsPage() {
                 />
               </div>
 
-              {/* Modal Details */}
-              <div className="p-6 sm:p-8 bg-[#121212] border-t border-neutral-800">
-                <span className="text-xs font-black tracking-[0.25em] text-[#f5b800] uppercase block mb-2">
-                  {activeImageModal.categoryLabel}
-                </span>
-                <h2 className="text-xl sm:text-2xl font-black text-white font-display mb-3">
-                  {activeImageModal.title}
-                </h2>
-                <p className="text-gray-300 text-sm leading-relaxed mb-4">
-                  {activeImageModal.description}
-                </p>
-                <div className="inline-block bg-neutral-900 border border-neutral-800 px-3.5 py-1.5 rounded-xs text-xs font-medium text-gray-400">
-                  <span className="text-white font-bold mr-2">Key Specs:</span> {activeImageModal.specs}
-                </div>
-              </div>
             </motion.div>
           </motion.div>
         )}
