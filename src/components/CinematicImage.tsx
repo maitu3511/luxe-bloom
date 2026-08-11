@@ -163,7 +163,7 @@ export default function CinematicImage({
             // renders, well ahead of the person scrolling to it.
             loading="eager"
             decoding="async"
-            fetchPriority={priority ? "high" : "auto"}
+            {...({ fetchpriority: priority ? "high" : "auto" } as Record<string, string>)}
             onLoad={() => setIsLoaded(true)}
             onError={(e) => {
               setIsLoaded(true);
