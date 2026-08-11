@@ -6,7 +6,7 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import jmtLogoImg from "../assets/images/jmt_logo_brand_1786107812360.jpg";
+import jmtLogoImg from "../assets/images/jmt_logo_new.jpg";
 
 interface HeaderProps {
   currentPage: "home" | "services" | "projects" | "about" | "machinery" | "faqs" | "contact";
@@ -86,7 +86,7 @@ export default function Header({ currentPage, onNavigate }: HeaderProps) {
           </motion.div>
 
           {/* Desktop Menu - Replicated with animated gold layout underline */}
-          <nav className="hidden md:flex space-x-6 lg:space-x-8 items-center">
+          <nav className="hidden lg:flex space-x-6 lg:space-x-8 items-center">
             {menuItems.map((item) => {
               const isActive = currentPage === item.targetId;
 
@@ -114,7 +114,7 @@ export default function Header({ currentPage, onNavigate }: HeaderProps) {
           </nav>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="text-gray-300 hover:text-[#D4AF37] focus:outline-none p-2 rounded-md transition-colors"
@@ -133,7 +133,7 @@ export default function Header({ currentPage, onNavigate }: HeaderProps) {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" as const }}
-            className="md:hidden bg-black/95 backdrop-blur-xl border-t border-[#D4AF37]/30 px-4 pt-4 pb-6 space-y-2 overflow-hidden shadow-2xl"
+            className="lg:hidden bg-black/95 backdrop-blur-xl border-t border-[#D4AF37]/30 px-4 pt-4 pb-6 space-y-2 overflow-hidden shadow-2xl"
           >
             {menuItems.map((item) => {
               const isActive = currentPage === item.targetId;

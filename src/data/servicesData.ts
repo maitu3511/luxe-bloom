@@ -52,6 +52,14 @@ import mdfWoodenBoxPkgImg from "../assets/images/mdf_wooden_box_pkg_178616079976
 import foodPkgTwoImg from "../assets/images/food_pkg_two_1784522028562.jpg";
 import packagingGluerImg from "../assets/images/gluer_machine_new_1784613052337.jpg";
 
+// Merchandise & promotional printing service images
+import tshirtPrintingImg from "../assets/images/services/tshirt_printing.jpg";
+import shirtLogoPrintingImg from "../assets/images/services/shirt_logo_printing.jpg";
+import mugPrintingImg from "../assets/images/services/mug_printing.jpg";
+import cupPrintingImg from "../assets/images/services/cup_printing.jpg";
+import bottlePrintingImg from "../assets/images/services/bottle_printing.jpg";
+
+
 export interface ServiceDetail {
   id: string;
   title: string;
@@ -662,5 +670,121 @@ export const PACKAGING_SERVICES_LIST: ServiceDetail[] = [
     ],
     materialsUsed: ["Craft Liner", "E-Flute / B-Flute Corrugated Board"],
     finishingOptions: ["Waterproof Varnish", "Self-Locking Die Cut"]
+  },
+  {
+    id: "tshirt-printing",
+    title: "T-Shirt Printing",
+    category: "packaging",
+    image: tshirtPrintingImg,
+    shortDesc: "Custom t-shirt printing for corporate uniforms, events and merchandise using screen and DTF printing.",
+    longDesc: "Bulk and short-run t-shirt printing on combed cotton and poly-blend fabrics. We use screen printing for high-volume solid colour work and DTF/DTG for photographic, multi-colour artwork with soft hand feel and strong wash durability.",
+    gallery: [tshirtPrintingImg, shirtLogoPrintingImg],
+    benefits: [
+      "Screen, DTF and DTG printing options",
+      "Wash-durable, crack-resistant inks",
+      "Bulk corporate and event quantities",
+      "Accurate brand colour matching"
+    ],
+    applications: [
+      "Corporate Uniforms & Staff Tees",
+      "Event, Marathon & Campaign Merchandise",
+      "Promotional Giveaways",
+      "College & Institutional Apparel"
+    ],
+    materialsUsed: ["Combed Cotton", "Poly-Cotton Blend", "Dri-Fit Polyester"],
+    finishingOptions: ["Screen Print", "DTF Transfer", "Puff / Raised Print"]
+  },
+  {
+    id: "shirt-logo-printing",
+    title: "Shirt Logo Printing",
+    category: "packaging",
+    image: shirtLogoPrintingImg,
+    shortDesc: "Precision logo branding on formal shirts and workwear via embroidery and heat-press transfer.",
+    longDesc: "Small-format brand identity application on corporate formal shirts, polos and workwear. Chest, sleeve and collar placements are produced with digitised embroidery or heat-press transfers for crisp, professional and long-lasting branding.",
+    gallery: [shirtLogoPrintingImg, tshirtPrintingImg],
+    benefits: [
+      "Digitised embroidery for a premium finish",
+      "Heat-press transfer for fine detail logos",
+      "Chest, sleeve, collar and cuff placements",
+      "Consistent placement across bulk orders"
+    ],
+    applications: [
+      "Corporate Formal Shirts & Polos",
+      "Hospitality & Retail Staff Uniforms",
+      "Industrial Workwear Branding",
+      "Executive Gifting Apparel"
+    ],
+    materialsUsed: ["Cotton Poplin", "Twill", "Polyester Blend Workwear"],
+    finishingOptions: ["Embroidery", "Heat-Press Transfer", "Woven Label"]
+  },
+  {
+    id: "mug-printing",
+    title: "Mug Printing",
+    category: "packaging",
+    image: mugPrintingImg,
+    shortDesc: "Custom printed ceramic and magic mugs with full-wrap sublimation branding.",
+    longDesc: "Personalised ceramic mug printing using dye-sublimation for photo-quality, dishwasher-safe full wrap graphics. Available in classic white, inner-colour, matte black and heat-reveal magic mugs for gifting and retail merchandise.",
+    gallery: [mugPrintingImg, cupPrintingImg],
+    benefits: [
+      "Photo-quality full wrap sublimation",
+      "Dishwasher and microwave safe prints",
+      "Single-piece personalisation supported",
+      "Gift-box packaging available in-house"
+    ],
+    applications: [
+      "Corporate Gifting & Diwali Hampers",
+      "Employee Onboarding Kits",
+      "Cafe & Retail Merchandise",
+      "Personalised Photo Gifts"
+    ],
+    materialsUsed: ["Grade-A Coated Ceramic", "Magic Heat-Reveal Coating"],
+    finishingOptions: ["Full Wrap Sublimation", "Inner & Handle Colour", "Matte Finish"]
+  },
+  {
+    id: "cup-printing",
+    title: "Cup Printing",
+    category: "packaging",
+    image: cupPrintingImg,
+    shortDesc: "Branded paper and ripple cups printed food-safe for cafes, events and QSR chains.",
+    longDesc: "Food-grade printed paper cups produced on flexo and offset lines with food-safe inks and PE/PLA barrier coatings. Available in 65ml to 350ml sizes with single or double-wall ripple construction for hot and cold beverages.",
+    gallery: [cupPrintingImg, mugPrintingImg],
+    benefits: [
+      "Food-safe inks and barrier coatings",
+      "Single wall, double wall and ripple options",
+      "65ml to 350ml size range",
+      "High-volume flexo production runs"
+    ],
+    applications: [
+      "Cafes, QSR & Cloud Kitchens",
+      "Corporate Pantries & Offices",
+      "Exhibitions & Event Catering",
+      "Hotel & Banquet Service"
+    ],
+    materialsUsed: ["Food-Grade Cup Board", "PE / PLA Coated Paper"],
+    finishingOptions: ["Flexo Print", "Offset Print", "Matte Food-Safe Varnish"]
+  },
+  {
+    id: "bottle-printing",
+    title: "Bottle Printing",
+    category: "packaging",
+    image: bottlePrintingImg,
+    shortDesc: "Custom branded steel, glass and PET bottles printed with UV, screen and laser engraving.",
+    longDesc: "Merchandise bottle branding on insulated steel, glass and PET bodies using cylindrical UV printing, curved screen printing and laser engraving for durable, scratch-resistant logos that survive daily use and washing.",
+    gallery: [bottlePrintingImg, mugPrintingImg],
+    benefits: [
+      "Cylindrical UV, screen and laser options",
+      "Scratch and wash-resistant branding",
+      "Matte, gloss and metallic bottle finishes",
+      "Custom gift boxing for hampers"
+    ],
+    applications: [
+      "Corporate Gifting & Welcome Kits",
+      "Fitness, Sports & Event Merchandise",
+      "Hotel & Wellness Amenities",
+      "Retail Branded Drinkware"
+    ],
+    materialsUsed: ["Insulated Stainless Steel", "Borosilicate Glass", "Food-Grade PET"],
+    finishingOptions: ["Cylindrical UV Print", "Curved Screen Print", "Laser Engraving"]
   }
 ];
+

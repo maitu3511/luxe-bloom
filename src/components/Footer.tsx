@@ -6,7 +6,7 @@
 import React, { useState } from "react";
 import { Phone, Mail, MapPin, Check } from "lucide-react";
 import { motion } from "motion/react";
-import jmtLogoImg from "../assets/images/jmt_logo_brand_1786107812360.jpg";
+import jmtLogoImg from "../assets/images/jmt_logo_new.jpg";
 
 export default function Footer() {
   const [formData, setFormData] = useState({

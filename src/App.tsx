@@ -29,8 +29,57 @@ import {
   BackgroundParticleCanvas,
 } from "./components/GlobalAnimations";
 
+type PageKey = "home" | "services" | "projects" | "about" | "machinery" | "faqs" | "contact";
+
+/** Unique title + description per in-app page (keeps tab/share context accurate). */
+const PAGE_META: Record<PageKey, { title: string; description: string }> = {
+  home: {
+    title: "Premium Pack Co | Box Printing & Packaging, Okhla Delhi",
+    description:
+      "Offset & digital printing, luxury rigid boxes, mono cartons and complete in-house box making in Okhla Phase-II, New Delhi.",
+  },
+  about: {
+    title: "About Premium Pack Co | Jai Maa Trading, New Delhi",
+    description:
+      "Learn about Premium Pack Co (Jai Maa Trading) — our Okhla Phase-II plant, in-house printing and box-making capability, and quality standards.",
+  },
+  services: {
+    title: "Printing & Packaging Services | Premium Pack Co",
+    description:
+      "Catalogues, brochures, calendars, rigid boxes, mono cartons plus t-shirt, mug, cup and bottle printing — all produced in-house.",
+  },
+  projects: {
+    title: "Our Projects & Portfolio | Premium Pack Co",
+    description:
+      "Browse printed catalogues, luxury rigid boxes, corporate gift sets and speciality finishes such as Scodix foiling, spot UV and gold leafing.",
+  },
+  machinery: {
+    title: "Our Machinery & Plant | Premium Pack Co",
+    description:
+      "Heidelberg offset presses, Konica digital press, lamination, die-cutting, foiling and box-making machinery with live working videos.",
+  },
+  faqs: {
+    title: "FAQs | Printing & Packaging Questions | Premium Pack Co",
+    description:
+      "Answers on minimum order quantity, turnaround time, artwork formats, materials, finishing options and delivery for print and packaging orders.",
+  },
+  contact: {
+    title: "Contact Premium Pack Co | Okhla Phase-II, New Delhi",
+    description:
+      "Get a quote for box printing and packaging. Call +91 7503899662 or message us on WhatsApp — Okhla Phase-II, New Delhi.",
+  },
+};
+
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<"home" | "services" | "projects" | "about" | "machinery" | "faqs" | "contact">("home");
+  const [currentPage, setCurrentPage] = useState<PageKey>("home");
+
+  React.useEffect(() => {
+    const meta = PAGE_META[currentPage];
+    document.title = meta.title;
+    const desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute("content", meta.description);
+  }, [currentPage]);
+
 
   const handleNavigate = (targetId: string) => {
     if (targetId === "services") {
