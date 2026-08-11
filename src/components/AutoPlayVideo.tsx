@@ -19,8 +19,17 @@ interface AutoPlayVideoProps {
 
 /**
  * Instant, scroll-aware looping video.
- * - Starts downloading right away (preload="auto") so it is ready to play
- *   the moment it scrolls into view instead of buffering on demand.
+ * - Every machine/service page can have 15-25 of these videos in the DOM
+ *   at once. Previously every single one carried preload="auto" from the
+ *   moment it mounted, so the browser tried to download every clip on the
+ *   page in parallel the instant the page opened - the one actually on
+ *   screen had to fight 20+ other downloads for bandwidth, which is why
+ *   playback did not start immediately. Now the <video> has no `src` at
+ *   all until it gets within ~800px of the viewport, so the browser never
+ *   requests it until it's actually about to be needed.
+ * - Once it is within that 800px pre-load range, the file starts fetching
+ *   right away (preload="auto") so it has a head start and is fully ready
+ *   by the time it scrolls into the visible play zone.
  * - Plays automatically as soon as it is visible (and as soon as it has
  *   enough data), keeps looping continuously the whole time the person
  *   stays on the section, and pauses when scrolled away (saves CPU/data).
@@ -39,8 +48,12 @@ export default function AutoPlayVideo({
   const wrapRef = React.useRef<HTMLDivElement | null>(null);
   const videoRef = React.useRef<HTMLVideoElement | null>(null);
   const isInViewRef = React.useRef(false);
+  const hasStartedLoadRef = React.useRef(false);
   const [failed, setFailed] = React.useState(false);
   const [isReady, setIsReady] = React.useState(false);
+  // Becomes true only once the video is close to the viewport - this is
+  // what gates whether the <video> tag gets a `src` at all (see below).
+  const [shouldLoad, setShouldLoad] = React.useState(false);
 
   const attemptPlay = React.useCallback(() => {
     const video = videoRef.current;
@@ -59,6 +72,31 @@ export default function AutoPlayVideo({
         }, 250);
       });
     }
+  }, []);
+
+  // Early "start downloading" observer - fires well before the video is
+  // visible so the file has a head start buffering, without competing
+  // with every other video on the page for bandwidth from the moment the
+  // page loads.
+  React.useEffect(() => {
+    const node = wrapRef.current;
+    if (!node) return;
+
+    const preloadObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasStartedLoadRef.current) {
+            hasStartedLoadRef.current = true;
+            setShouldLoad(true);
+            preloadObserver.disconnect();
+          }
+        });
+      },
+      { threshold: 0, rootMargin: "800px 0px" }
+    );
+
+    preloadObserver.observe(node);
+    return () => preloadObserver.disconnect();
   }, []);
 
   React.useEffect(() => {
@@ -119,14 +157,17 @@ export default function AutoPlayVideo({
 
       <video
         ref={videoRef}
-        src={src}
+        // No `src` until shouldLoad flips true (~800px before the video
+        // reaches the viewport) - this is what stops the browser from
+        // requesting every video on the page at once.
+        src={shouldLoad ? src : undefined}
         muted
         loop
         autoPlay
         playsInline
-        // Fetch the file immediately (not just metadata) so it's ready to
-        // play the instant it becomes visible, instead of buffering then.
-        preload="auto"
+        // Once loading has started, fetch the whole file (not just
+        // metadata) so it's fully buffered by the time it becomes visible.
+        preload={shouldLoad ? "auto" : "none"}
         onCanPlay={handleReady}
         onLoadedData={handleReady}
         onLoadedMetadata={handleReady}

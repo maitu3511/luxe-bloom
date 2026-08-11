@@ -330,6 +330,8 @@ export default function ServiceDetailPage({
                   <img
                     src={img}
                     alt={`${service.title} showcase ${idx + 1}`}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter brightness-95"
                     referrerPolicy="no-referrer"
                   />
@@ -373,6 +375,8 @@ export default function ServiceDetailPage({
                     <img
                       src={rel.image}
                       alt={rel.title}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       referrerPolicy="no-referrer"
                     />

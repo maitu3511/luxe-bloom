@@ -155,15 +155,18 @@ export default function CinematicImage({
           <motion.img
             src={src}
             alt={alt}
-            // Always eager + high priority fetch: these are hero/service
-            // images the visitor scrolls to almost immediately, so lazy
-            // loading was delaying the browser's request until the image
-            // was nearly on-screen, making it look "not loading". Eager
-            // loading lets the browser fetch it as soon as the page/route
-            // renders, well ahead of the person scrolling to it.
-            loading="eager"
+            // Only the first/above-the-fold image on a page is fetched
+            // eagerly (priority=true). Every other image on Services and
+            // Machinery pages used to be forced to "eager" as well, which
+            // made the browser request 15-25 full-size images all at once
+            // on page load and starved bandwidth for the ones actually on
+            // screen - that is what made images "take time to load".
+            // Lazy-loading the rest lets the browser fetch each image only
+            // as the visitor scrolls near it, so the visible one always
+            // wins the bandwidth race.
+            loading={priority ? "eager" : "lazy"}
             decoding="async"
-            {...({ fetchpriority: priority ? "high" : "auto" } as Record<string, string>)}
+            {...({ fetchpriority: priority ? "high" : "low" } as Record<string, string>)}
             onLoad={() => setIsLoaded(true)}
             onError={(e) => {
               setIsLoaded(true);
