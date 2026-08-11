@@ -26,7 +26,14 @@ export default function Hero() {
       aria-label="Premium Pack Co live printing production floor"
       className="relative w-full overflow-hidden bg-black"
     >
+      {/* Primary page heading kept for SEO/screen readers without any visible
+          text over the hero video (client requirement: clean video only). */}
+      <h1 className="sr-only">
+        Premium Pack Co — Box Printing &amp; Packaging Manufacturer in Okhla Phase-II, New Delhi
+      </h1>
+
       <div className="relative w-full aspect-[16/9] max-h-[86vh] mx-auto">
+
         <video
           ref={videoRef}
           autoPlay
