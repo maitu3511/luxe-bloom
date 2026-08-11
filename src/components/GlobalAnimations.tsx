@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, useScroll, useSpring, AnimatePresence } from "motion/react";
-import jmtLogoImg from "../assets/images/jmt_logo_brand_1786107812360.jpg";
+import jmtLogoImg from "../assets/images/jmt_logo_new.jpg";
 
 /**
  * 1. Scroll Progress Bar
@@ -95,7 +95,7 @@ export function LuxuryLoader({ onFinish }: { onFinish?: () => void }) {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // Brand splash screen stays visible for 10 seconds, then enters the site
+    // Short brand splash (~0.8s) so the site becomes usable fast
     const timer = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
@@ -104,9 +104,10 @@ export function LuxuryLoader({ onFinish }: { onFinish?: () => void }) {
           if (onFinish) onFinish();
           return 100;
         }
-        return prev + 1;
+        return prev + 5;
       });
-    }, 100);
+    }, 40);
+
 
     return () => clearInterval(timer);
   }, [onFinish]);

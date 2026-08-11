@@ -163,7 +163,7 @@ export default function CinematicImage({
             // renders, well ahead of the person scrolling to it.
             loading="eager"
             decoding="async"
-            fetchPriority={priority ? "high" : "auto"}
+            {...({ fetchpriority: priority ? "high" : "auto" } as Record<string, string>)}
             onLoad={() => setIsLoaded(true)}
             onError={(e) => {
               setIsLoaded(true);
@@ -223,13 +223,14 @@ export default function CinematicImage({
 
         {/* Sliding Interactive Button on Hover */}
         {showHoverAction && (
-          <div className="mt-3 overflow-hidden">
-            <div className="transform translate-y-2 group-hover:translate-y-0 opacity-80 group-hover:opacity-100 transition-all duration-300 flex items-center gap-2 text-xs font-black tracking-widest text-[#f5b800] uppercase font-display">
+          <div className="mt-3">
+            <div className="opacity-85 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-2 text-xs font-black tracking-widest text-[#f5b800] uppercase font-display">
               <span>{hoverActionText}</span>
               <ArrowRight size={14} className="transform group-hover:translate-x-1.5 transition-transform duration-300" />
             </div>
           </div>
         )}
+
       </div>
     </motion.div>
   );

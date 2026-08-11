@@ -86,16 +86,16 @@ export default function TwoColumnBanner() {
             <div className="space-y-4 font-display">
               <div className="flex flex-col sm:flex-row sm:items-baseline sm:space-x-4">
                 <span className="text-gray-400 text-xl sm:text-2xl font-light tracking-wide uppercase">WE</span>
-                <span className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-widest uppercase">PRINT</span>
+                <span className="text-2xl sm:text-4xl lg:text-6xl font-black tracking-wide sm:tracking-widest uppercase break-words">PRINT</span>
               </div>
               <div className="flex flex-col sm:flex-row sm:items-baseline sm:space-x-4">
                 <span className="text-gray-400 text-xl sm:text-2xl font-light tracking-wide uppercase">WE</span>
                 {/* Outlined text for PACKAGE to give precise visual rhythm */}
-                <span className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-widest uppercase text-outline-white">PACKAGE</span>
+                <span className="text-2xl sm:text-4xl lg:text-6xl font-black tracking-wide sm:tracking-widest uppercase break-words text-outline-white">PACKAGE</span>
               </div>
               <div className="flex flex-col sm:flex-row sm:items-baseline sm:space-x-4">
                 <span className="text-gray-400 text-xl sm:text-2xl font-light tracking-wide uppercase">WE</span>
-                <span className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-widest uppercase">PRODUCE</span>
+                <span className="text-2xl sm:text-4xl lg:text-6xl font-black tracking-wide sm:tracking-widest uppercase break-words">PRODUCE</span>
               </div>
             </div>
           </div>

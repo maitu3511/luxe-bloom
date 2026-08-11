@@ -94,6 +94,15 @@ import designSketchingImg from "../assets/images/design_sketching_process_178452
 import swastikaShowroomImg from "../assets/images/swastika_office_showroom_1784614485773.jpg";
 import logisticsVanImg from "../assets/images/logistics_van_warehouse_1784520921221.jpg";
 
+// Client-supplied project photography (corporate gift sets & speciality finishing samples)
+import giftSetBlackImg from "../assets/images/projects/corporate_gift_box_set_black.jpg";
+import giftSetNavyImg from "../assets/images/projects/corporate_gift_box_set_navy.jpg";
+import scodixFoilingSampleImg from "../assets/images/projects/scodix_foiling_sample.jpg";
+import scodixFoilingCardImg from "../assets/images/projects/scodix_foiling_card.jpg";
+import crystalUvSampleImg from "../assets/images/projects/crystal_uv_sample.jpg";
+import goldLeafingSampleImg from "../assets/images/projects/gold_leafing_sample.jpg";
+import spotUvSampleImg from "../assets/images/projects/spot_uv_sample.jpg";
+
 interface ProjectItem {
   id: string;
   title: string;
@@ -351,8 +360,54 @@ export default function ProjectsPage() {
       alt: "Full brand collateral suite including pamphlets, posters, and leaflets",
       description: "Multi-item commercial print campaign including promotional leaflets, gatefold pamphlets, wall posters, and hang tags.",
       specs: "Multi-Page Pamphlets | Satin Finish | Die-Cut Hang Tags"
+    },
+    {
+      id: "pr_scodix_foil",
+      title: "Scodix Digital Foiling Finish",
+      categoryLabel: "SPECIALITY FINISHING",
+      src: scodixFoilingSampleImg,
+      alt: "Scodix digital gold foiling sample printed on textured art paper",
+      description: "Scodix digital foiling creates brilliant metallic effects with genuine depth and micro-detail — no metal dies required, ideal for short runs and personalised covers.",
+      specs: "Scodix Digital Foil | Raised Metallic Effect | No Die Required"
+    },
+    {
+      id: "pr_scodix_card",
+      title: "Scodix Foiled Presentation Card",
+      categoryLabel: "SPECIALITY FINISHING",
+      src: scodixFoilingCardImg,
+      alt: "Premium presentation card with raised Scodix gold foil lettering on natural textured stock",
+      description: "Heavyweight natural textured stock enhanced with raised Scodix gold foil typography for invitation cards, brand covers and luxury swatch cards.",
+      specs: "Textured Natural Stock | Raised Gold Foil | Sheet-Fed Digital"
+    },
+    {
+      id: "pr_gold_leafing",
+      title: "Hand-Applied Gold Leafing",
+      categoryLabel: "SPECIALITY FINISHING",
+      src: goldLeafingSampleImg,
+      alt: "Hand-applied gold leafing metallic finish sample on premium paper",
+      description: "A fine metallic finish applied by hand that delivers rich shine and timeless beauty across book covers, rigid box wraps and premium stationery.",
+      specs: "Hand-Applied Gold Leaf | Rich Metallic Shine | Artisan Finish"
+    },
+    {
+      id: "pr_crystal_uv",
+      title: "Crystal UV High-Gloss Finish",
+      categoryLabel: "SPECIALITY FINISHING",
+      src: crystalUvSampleImg,
+      alt: "Crystal UV raised high-gloss blue lettering finish sample on art paper",
+      description: "A high-gloss, raised UV finish that adds dimension, clarity and a luxurious shine to logos, lettering and pack graphics.",
+      specs: "Raised Crystal UV | High-Gloss Clarity | Tactile Dimension"
+    },
+    {
+      id: "pr_spot_uv",
+      title: "Spot UV Coating & Contrast Detailing",
+      categoryLabel: "SPECIALITY FINISHING",
+      src: spotUvSampleImg,
+      alt: "Spot UV coating sample with glossy blue lettering on matte laminated sheet",
+      description: "A UV coating applied to selected areas of the design to create contrast, highlight key details and add strong visual impact against matte lamination.",
+      specs: "Selective Spot UV | Matte / Gloss Contrast | Registered Screen"
     }
   ];
+
 
   // 2. PACKAGING SECTION ITEMS
   const packagingItems: ProjectItem[] = [
@@ -598,8 +653,27 @@ export default function ProjectsPage() {
       alt: "Multi-compartment dry fruit hamper with gold embossed lid",
       description: "Premium gift box featuring modular compartment dividers, soft velvet trays, and intricate gold foil geometric lid patterns.",
       specs: "Modular Dividers | Velvet Tray | Gold Foil Geometric Design"
+    },
+    {
+      id: "pk_gift_set_black",
+      title: "Matte Black Corporate Welcome Kit Box",
+      categoryLabel: "CORPORATE GIFTING",
+      src: giftSetBlackImg,
+      alt: "Matte black rigid corporate welcome kit box with compartments for a leather diary, bottle and accessories",
+      description: "Rigid matte black welcome kit with compartmentalised foam trays holding a leather diary, branded steel bottle, accessories pouch and a personalised note card.",
+      specs: "Rigid Kappa Board | Die-Cut Foam Compartments | Gold Foil Branding"
+    },
+    {
+      id: "pk_gift_set_navy",
+      title: "Navy Executive Onboarding Gift Set",
+      categoryLabel: "CORPORATE GIFTING",
+      src: giftSetNavyImg,
+      alt: "Navy blue rigid executive gift box with notebook, pen, keyring and insulated bottle in foam inserts",
+      description: "Executive onboarding gift set presented in a navy rigid lid-and-base box with precision foam nests for a notebook, metal pen, leather keyring and insulated bottle.",
+      specs: "Lid & Base Rigid Box | Precision Foam Nesting | Soft-Touch Wrap"
     }
   ];
+
 
   // 3. MACHINERY & INFRASTRUCTURE SECTION ITEMS
   const machineryItems: ProjectItem[] = [
