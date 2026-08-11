@@ -36,6 +36,16 @@ const SERVICE_VIDEO_IDS = [
   "cake-boxes",
   "mdf-boxes",
   "corrugation-boxes",
+  // Last 5 Packaging Services - "how it's printed on the machine" videos.
+  // Drop the matching file into /public/videos/services/<id>.mp4 (same
+  // pattern as every other id above) and it will start showing/auto-playing
+  // on the Services page and the Service Detail page automatically, with
+  // no further code changes needed.
+  "tshirt-printing",
+  "shirt-logo-printing",
+  "mug-printing",
+  "cup-printing",
+  "bottle-printing",
 ] as const;
 
 const MACHINE_VIDEO_IDS = [
